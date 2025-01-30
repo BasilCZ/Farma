@@ -7,10 +7,14 @@ public class Farm {
     private ArrayList<Animal> barn = new ArrayList<>();
     private double usedArea;
     private Player player;
+    private int howManyBig;
+    private int howManySmall;
 
     public Farm(Player p) {
-        usedArea = 0;
+        this.usedArea = 0;
         this.player = p;
+        this.howManyBig = 0;
+        this.howManySmall = 0;
     }
 
     public void plantFlower(Flower flower){
@@ -50,7 +54,17 @@ public class Farm {
         }
     }
 
-    public void addAnimal(){}
+    public void addAnimal(Animal animal){
+        if(animal.getSize() == Size.SMALL){
+            if(howManySmall<10){
+                barn.add(animal);
+            }
+        } else {
+            if(howManyBig<10){
+                barn.add(animal);
+            }
+        }
+    }
 
     public void killAnimal(){}
 }
