@@ -28,4 +28,15 @@ public abstract class Flower {
                 '}';
     }
 
+    public double getNeededArea() {
+        return neededArea;
+    }
+
+    public void increaseChance(int howMuch){
+        if(chanceOfGrowth+howMuch>100){
+            chanceOfGrowth = 100;
+        } else {
+            chanceOfGrowth += howMuch;
+        }
+    }
 }
