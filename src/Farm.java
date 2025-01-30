@@ -66,5 +66,28 @@ public class Farm {
         }
     }
 
-    public void killAnimal(){}
+    public void killAnimal(Animal animal){
+        for (int i = 0; i < barn.size(); i++) {
+            if(animal.equals(barn.get(i))){
+                barn.remove(i);
+            }
+        }
+    }
+
+    public void petAnimal(){
+        System.out.println("You petted the animal...");
+    }
+
+    public void sellAnimal(Animal animal){
+        for (int i = 0; i < barn.size(); i++) {
+            if(animal.equals(barn.get(i))){
+                if(barn.get(i).getSize()==Size.SMALL){
+                    player.addMoney(150);
+                } else {
+                    player.addMoney(300);
+                }
+                barn.remove(i);
+            }
+        }
+    }
 }
