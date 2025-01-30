@@ -4,11 +4,13 @@ public abstract class Flower {
     protected double price;
     protected double neededArea;
     protected double chanceOfGrowth;
+    protected Type type;
 
-    public Flower(String name, double price, double neededArea, double chanceOfGrowth) {
+    public Flower(String name, double price, double neededArea, double chanceOfGrowth, Type type) {
         this.name = name;
         this.price = price;
         this.neededArea = neededArea;
+        this.type = type;
         if(chanceOfGrowth>100){
             this.chanceOfGrowth = 100;
         } else if (chanceOfGrowth<0){
@@ -25,6 +27,7 @@ public abstract class Flower {
                 ", price=" + price +
                 ", neededArea=" + neededArea +
                 ", chanceOfGrowth=" + chanceOfGrowth +
+                ", type=" + type +
                 '}';
     }
 
@@ -38,5 +41,9 @@ public abstract class Flower {
         } else {
             chanceOfGrowth += howMuch;
         }
+    }
+
+    public double getPrice() {
+        return price;
     }
 }

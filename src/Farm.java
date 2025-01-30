@@ -16,7 +16,7 @@ public class Farm {
         this.howManyBig = 0;
         this.howManySmall = 0;
     }
-
+    //Kontroluje zda rostlina neporušuje žádné podmínky
     public void plantFlower(Flower flower){
         if(flower.getNeededArea()+usedArea<=100 && farm.size()<5){
             farm.add(flower);
@@ -25,19 +25,19 @@ public class Farm {
             System.out.println("There's not enough space for your flower");
         }
     }
-
+    //Sklidí rostlinu
     public void harvestFlower(Flower flower){
         for (int i = 0; i < farm.size(); i++) {
             if(flower.equals(farm.get(i))){
                 int chance = rd.nextInt(100);
                 if(chance<flower.chanceOfGrowth){
-                    player.addMoney(50);
+                    player.addMoney((int) (farm.get(i).getPrice()*2));
                 }
                 farm.remove(i);
             }
         }
     }
-
+    //Zalije rostlinu a zvýší šanci o 2%
     public void waterFlower(Flower flower){
         for (int i = 0; i < farm.size(); i++) {
             if(flower.equals(farm.get(i))){
@@ -45,7 +45,7 @@ public class Farm {
             }
         }
     }
-
+    //Zbaví se kytky
     public void destroyFlower(Flower flower){
         for (int i = 0; i < farm.size(); i++) {
             if(flower.equals(farm.get(i))){
@@ -53,7 +53,7 @@ public class Farm {
             }
         }
     }
-
+    //Přidá rostlinu do stodoly jestli zvíře splňuje zadané požadavky
     public void addAnimal(Animal animal){
         if(animal.getSize() == Size.SMALL){
             if(howManySmall<10){
@@ -65,7 +65,7 @@ public class Farm {
             }
         }
     }
-
+    //Zbaví se zvířete
     public void killAnimal(Animal animal){
         for (int i = 0; i < barn.size(); i++) {
             if(animal.equals(barn.get(i))){
@@ -73,11 +73,11 @@ public class Farm {
             }
         }
     }
-
+    //Pohladí zvíře
     public void petAnimal(){
         System.out.println("You petted the animal...");
     }
-
+    //Prodá zvíře
     public void sellAnimal(Animal animal){
         for (int i = 0; i < barn.size(); i++) {
             if(animal.equals(barn.get(i))){
